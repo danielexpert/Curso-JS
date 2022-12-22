@@ -1,7 +1,7 @@
 let musicas = [
-    {titulo:'Guitar solo', artista:'João Tinti', src:'sound/Here it Comes - TrackTribe.mp3', img:'img/rock.jpg'},
-    {titulo:'Samba raiz', artista:'Bossa Nova Brasil', src:'musicas/Ella Vater - The Mini Vandals.mp3', img:'img/carro.jpg'},
-    {titulo:'Música piano', artista:'John Green', src:'musicas/A Brand New Start - TrackTribe (1).mp3', img:'img/bob.jpg'}
+    {titulo:'Guitar solo', artista:'Daniel Guimarães', src:'laboratorio-ex-JS/sound/Here it Comes - TrackTribe.mp3', img:'img/rock.jpg'},
+    {titulo:'Rap', artista:'Rap', src:'laboratorio-ex-JS/sound/Slipping Away - Dyalla.mp3', img:'img/carro.jpg'},
+    {titulo:'Música Raggae', artista:'Bob Marley', src:'laboratorio-ex-JS/sound/Raggae.mp3', img:'img/bob.jpg'}
 ];
 
 let musica = document.querySelector('audio');
@@ -13,7 +13,7 @@ let imagem = document.querySelector('img');
 let nomeMusica = document.querySelector('.descricao h2');
 let nomeArtista = document.querySelector('.descricao i');
 
-//duracaoMusica.index.length = segundosParaMinutos(Math.floor(musica.duration));
+duracaoMusica.index = segundosParaMinutos(Math.floor(musica.duration));
 
 //eventos
 document.querySelector('#botao-play').addEventListener('click', tocarMusica);
@@ -21,7 +21,7 @@ document.querySelector('#botao-pause').addEventListener('click', pausarMusica);
 
 musica.addEventListener('timeupdate', atualizarBarra);
 
-document.querySelector('.anterior').addEventListener('click', () => {
+document.querySelector('#anterior').addEventListener('click', () => {
     indexMusica--;
     if (indexMusica < 0) {
         indexMusica = 2;
@@ -29,7 +29,7 @@ document.querySelector('.anterior').addEventListener('click', () => {
     renderizarMusica(indexMusica);
 });
 
-document.querySelector('.proxima').addEventListener('click', () => {
+document.querySelector('#proxima').addEventListener('click', () => {
     indexMusica++;
     if (indexMusica > 2){
         indexMusica = 0;
@@ -38,6 +38,17 @@ document.querySelector('.proxima').addEventListener('click', () => {
 });
 
 //funcoes
+
+function renderizarMusica(index){
+    musica.setAttribute('src', musicas[index].src);
+    musica.addEventListener('loadeddata', () =>{
+        nomeMusica.textContent = musicas[index].titulo;
+        nomeArtista.textContent = musicas[index].artista;
+        imagem.src = musicas[index].artista;
+       // duracaoMusica.textContent = segundosParaMinutos(Math.floor(musica.duration));
+    });
+}
+
 function tocarMusica(){
     musica.play();
     document.querySelector('#botao-pause').style.display = 'block';
@@ -66,3 +77,4 @@ function segundosParaMinutos(segundos){
 
     return campoMinutos+':'+campoSegundos;
 }
+
