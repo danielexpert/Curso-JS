@@ -1,0 +1,55 @@
+body {
+    background: linear-gradient(0, 0, 0, 0);
+}
+
+header, h1 {
+    color: black;
+    text-align: center;
+
+
+}
+
+.container {
+   
+    border-radius: 10px;
+    padding: 15px;  
+    width: 500px;
+    height: 100vh;
+    margin: auto;
+}
+
+.texbox {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.363);
+    background: lightblue;
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    border-radius: 7px;
+    
+}
+
+.texbox input{
+    font-family:inherit;
+    outline: 0;
+    border: 0;
+    border-bottom:3px solid black;
+    width: 70%;
+    font-size:1.2rem;
+    background: transparent;
+    margin-top: 30px;
+}
+
+
+footer {
+    text-align: center;
+    font-style: italic;
+}
+
+@media(min-width:412px) {
+    .container {
+        width: 90%;
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+}
